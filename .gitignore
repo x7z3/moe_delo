@@ -1,5 +1,11 @@
 .idea/
 .gradle/
 gradle/
+report/*
+target/
+history/
+build/
+!report/.gitkeep
 gradlew
 gradlew.bat
+*.log

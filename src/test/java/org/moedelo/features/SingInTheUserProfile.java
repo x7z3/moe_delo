@@ -9,7 +9,7 @@ import org.moedelo.steps.WebSiteUser;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
-public class WhenUserIsAuthenticating {
+public class SingInTheUserProfile {
 
     @Managed
     WebDriver driver;
@@ -24,7 +24,9 @@ public class WhenUserIsAuthenticating {
 
         user.clicksTheAuthButton();
 
-        user.isOnTheAuthPage();
+        user.switchesToOpenedAuthTab();
+
+        user.isOnTheAuthPageWhichUrlIs();
 
         user.entersEmail("test_acc_ip@testemail.org");
 

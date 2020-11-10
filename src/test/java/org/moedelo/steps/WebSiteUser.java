@@ -18,33 +18,38 @@ public class WebSiteUser {
         homePage.open();
     }
 
-    @Step("Click on sing in button")
+    @Step("Click on authorization button")
     public void clicksTheAuthButton() {
         homePage.clickAuthButton();
     }
 
-    @Step("Check if it's on the sing in page")
-    public void isOnTheAuthPage() {
-        assertThat(authPage.getDriver().getCurrentUrl())
-                .isEqualTo("https://oauth.moedelo.org/Authorize");
+    @Step("Switch to the tab with opened authorization page")
+    public void switchesToOpenedAuthTab() {
+        authPage.popToTop(authPage.getAuthPageUrl());
     }
 
-    @Step("Enter an email")
+    @Step("Check if we are on the authorization page")
+    public void isOnTheAuthPageWhichUrlIs() {
+        assertThat(authPage.getPageUrl())
+                .isEqualTo(authPage.getAuthPageUrl());
+    }
+
+    @Step("Enter the email \"{0}\"")
     public void entersEmail(String email) {
         authPage.enterEmail(email);
     }
 
-    @Step("Enter the password")
+    @Step("Enter the password \"{0}\"")
     public void entersPassword(String password) {
         authPage.enterPassword(password);
     }
 
-    @Step("Submit sing in form")
+    @Step("Submit authorization form")
     public void submitsAuthForm() {
         authPage.submitForm();
     }
 
-    @Step("Check if it is signed in right profile")
+    @Step("Check if we have authorized in the profile \"{0}\"")
     public void shouldSeeItsProfilePageWithName(String name) {
         assertThat(profilePage.getProfileButtonText()).containsIgnoringCase(name);
     }
